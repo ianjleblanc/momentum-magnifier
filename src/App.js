@@ -3,7 +3,11 @@ import TodoList from './TodoList';
 
 function App() {
   return (
-    <TodoList />
+    <div>
+      <TodoList />
+      <input type="text" />
+    </div>
+    
   )
 }
 
