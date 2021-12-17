@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function TodoList() {
+export default function CommitmentItem({commitment}) {
     return (
         <div>
-            Momentum Manager
+            
         </div>
     )
 }
