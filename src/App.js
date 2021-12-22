@@ -1,63 +1,75 @@
-import React, { useState, useRef, useEffect } from 'react';
-import CommitmentList from './momentum/CommitmentsList';
-import Header from './Header';
-import { v4 as uuidv4} from 'uuid'
+import React, { useState, useRef, useEffect } from "react";
+import TodoList from "./momentum/TodoList";
+import Header from "./Header";
+import { v4 as uuidv4 } from "uuid";
+import Footer from "./Footer";
 
-const LOCAL_STORAGE_KEY = 'commitApp.commitments'
+const LOCAL_STORAGE_KEY = "todoApp.todos";
 
 function App() {
-  const [commitments, setCommitments] = useState([]);
-  const commitNameRef = useRef();
+  const [todos, setTodos] = useState([]);
+  const todoNameRef = useRef();
 
-useEffect(() => {
-  const storedCommits = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
-  if (storedCommits) setCommitments(storedCommits)
-}, [])
+  useEffect(() => {
+    const storedTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    if (storedTodos) setTodos(storedTodos);
+  }, []);
 
-useEffect(() => {
-  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(commitments))
-} , [commitments])
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
+  }, [todos]);
 
+  function toggleTodo(id) {
+    const newTodos = [...todos];
+    const todo = newTodos.find((todo) => todo.id === id);
+    todo.complete = !todo.complete;
+    setTodos(newTodos);
+  }
 
-function toggleCommit(id) {
-  const newCommitments = [...commitments];
-  const commitment = newCommitments.find(commit => commit.id === id);
-  commitment.complete = !commitment.complete;
-  setCommitments(newCommitments);
-}
+  function handleClearCompleteTodos(e) {
+    e.preventDefault();
+    const newTodos = todos.filter(todo => !todo.complete);
+    setTodos(newTodos);
+  }
 
-function handleAddCommit(e) {
-  e.preventDefault();
-  const name = commitNameRef.current.value
-  if (name === '') return
-  setCommitments(prevCommit => {
-    return [...prevCommit, { id: uuidv4(), name: name, complete: false}]
-  });
-  commitNameRef.current.value = null;
-}
+  function handleAddTodo(e) {
+    e.preventDefault();
+    const name = todoNameRef.current.value;
+    if (name === "") return;
+    setTodos((prevTodo) => {
+      return [...prevTodo, { id: uuidv4(), name: name, complete: false }];
+    });
+    //clears out the input field
+    todoNameRef.current.value = null;
+  }
 
   return (
     <div>
       <Header />
-      
+
       <div>
-        <input ref={commitNameRef} type="text" />
-        <button onClick={handleAddCommit}>Add</button>
+        <input ref={todoNameRef} type="text" />
+        <button onClick={handleAddTodo}>Add</button>
         <button>Clear</button>
+        {/* onClick return input field blank */}
       </div>
-      <CommitmentList commitments={commitments} toggleCommit={toggleCommit}/>
+      <TodoList todos={todos} toggleCommit={toggleTodo} />
       <br />
-      <div>0 left to do</div> 
       <div>
-      <button>Clear All</button>
-      <button>Save All</button>
+        {todos.filter((todo) => !todo.complete).length}left to do
       </div>
-        
-      
-      
+      <div>
+        <button onClick={handleClearCompleteTodos}>Clear Completed</button>
+        <button>Save All</button>
+      </div>
+      <br />
+      <div className="quote d-flex justify-content-center">
+      (Random positive quote generator)
+      </div>
+      <br />
+      <Footer />
     </div>
-    
-  )
+  );
 }
 
 export default App;

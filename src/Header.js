@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
 
 export default function Header() {
-    return (
-        <div className="d-flex justify-content-center mb-2">
-            Momentum Magnifier
-        </div>
-    )
+  return (
+    <header className="jumbotron bg-dark">
+      <div className="container text-white">
+        <h1 className="display-4">momenti</h1>
+        <p className="lead 1rem">Momentum Magnifier</p>
+      </div>
+    </header>
+  );
 }
