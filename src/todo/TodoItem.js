@@ -6,16 +6,14 @@ export default function todoItem({ todo, toggleTodo }) {
   }
 
   return (
-    <div className="d-flex">
-      <label>
+    <div className="todo-item">
         <input
           type="checkbox"
           checked={todo.complete}
           onChange={handleTodoClick}
         />
         {todo.name}
-      </label>
-      <button className="mb-1">X</button>
+      <button className="remove-todo-btn">X</button>
     </div>
   );
 }

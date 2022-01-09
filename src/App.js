@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
-import TodoList from "./momentum/TodoList";
+import TodoList from "./todo/TodoList";
 import Header from "./Header";
 import { v4 as uuidv4 } from "uuid";
 import Footer from "./Footer";
+import "./App.css";
 
 const LOCAL_STORAGE_KEY = "todoApp.todos";
 
@@ -32,6 +33,10 @@ function App() {
     setTodos(newTodos);
   }
 
+  function handleClearInputField() {
+    todoNameRef.current.value = null
+  }
+
   function handleAddTodo(e) {
     e.preventDefault();
     const name = todoNameRef.current.value;
@@ -44,17 +49,20 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="App">
       <Header />
 
       <div>
-        <input ref={todoNameRef} type="text" />
+        <label htmlFor="todo">
+          <input ref={todoNameRef} type="text" id="todo" />
+        </label>
+        
         <button onClick={handleAddTodo}>Add</button>
-        <button>Clear</button>
+        <button onClick={handleClearInputField}>Clear</button>
         {/* onClick return input field blank */}
       </div>
-      <TodoList todos={todos} toggleCommit={toggleTodo} />
-      <br />
+      <TodoList todos={todos} toggleTodo={toggleTodo} />
+      
       <div>
         {todos.filter((todo) => !todo.complete).length}left to do
       </div>
@@ -62,11 +70,6 @@ function App() {
         <button onClick={handleClearCompleteTodos}>Clear Completed</button>
         <button>Save All</button>
       </div>
-      <br />
-      <div className="quote d-flex justify-content-center">
-      (Random positive quote generator)
-      </div>
-      <br />
       <Footer />
     </div>
   );
