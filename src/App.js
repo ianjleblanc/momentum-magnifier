@@ -29,12 +29,12 @@ function App() {
 
   function handleClearCompleteTodos(e) {
     e.preventDefault();
-    const newTodos = todos.filter(todo => !todo.complete);
+    const newTodos = todos.filter((todo) => !todo.complete);
     setTodos(newTodos);
   }
 
   function handleClearInputField() {
-    todoNameRef.current.value = null
+    todoNameRef.current.value = null;
   }
 
   function handleAddTodo(e) {
@@ -54,21 +54,30 @@ function App() {
 
       <div>
         <label htmlFor="todo">
-          <input ref={todoNameRef} type="text" id="todo" />
+          <input
+            ref={todoNameRef}
+            type="text"
+            id="todo"
+            placeholder="Add Todo"
+          />
+          <button className="btn btn-dark" onClick={handleAddTodo}>
+            Add
+          </button>
+          <button className="btn btn-dark" onClick={handleClearInputField}>
+            Clear
+          </button>
         </label>
-        
-        <button onClick={handleAddTodo}>Add</button>
-        <button onClick={handleClearInputField}>Clear</button>
-        {/* onClick return input field blank */}
+        <div className="todo-counter">
+        Left to do: {todos.filter((todo) => !todo.complete).length}
+        </div>
       </div>
       <TodoList todos={todos} toggleTodo={toggleTodo} />
-      
-      <div>
-        {todos.filter((todo) => !todo.complete).length}left to do
-      </div>
-      <div>
-        <button onClick={handleClearCompleteTodos}>Clear Completed</button>
-        <button>Save All</button>
+
+      <div className="clear-save-btn">
+        <button className="btn btn-dark" onClick={handleClearCompleteTodos}>
+          Clear Completed
+        </button>
+        <button className="btn btn-dark">Save All</button>
       </div>
       <Footer />
     </div>

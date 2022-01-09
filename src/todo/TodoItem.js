@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function todoItem({ todo, toggleTodo }) {
+
   function handleTodoClick() {
     toggleTodo(todo.id);
   }
@@ -12,7 +13,7 @@ export default function todoItem({ todo, toggleTodo }) {
           checked={todo.complete}
           onChange={handleTodoClick}
         />
-        {todo.name}
+        {todo.name.toUpperCase()}
       <button className="remove-todo-btn">X</button>
     </div>
   );
