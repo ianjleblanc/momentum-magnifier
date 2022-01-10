@@ -8,7 +8,8 @@
     text-align: center;
     background-color: rgb(78, 82, 82);
     background-image: url("./images/space-purple-blue.jpg");
-    height: 100vh;
+    /* height: 100vh; */
+    background-size: cover;
 }
 
 .momenti-header {
@@ -65,9 +66,14 @@ input[type=checkbox] {
     left: 10px;
 }
 
+.content-wrapper {
+    padding-bottom: 32px;
+}
+
 .footer {
     color: white;
     width: 100%;
-    position: fixed;
-    bottom: 0;
+    /* position: fixed; */
+    /* bottom: 0; */
+    height: 100px;
 }

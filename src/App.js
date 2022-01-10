@@ -28,13 +28,13 @@ function App() {
   }
 
   function handleClearCompleteTodos() {
-    
-    const confirm = window.confirm("Are you sure want to clear all magnifiers?")
+    const confirm = window.confirm(
+      "Are you sure want to clear all magnifiers?"
+    );
     if (confirm) {
       const newTodos = todos.filter((todo) => !todo.complete);
       setTodos(newTodos);
     }
-    
   }
 
   function handleClearInputField() {
@@ -42,9 +42,8 @@ function App() {
   }
 
   function handleRemoveSingleTodo(id) {
-    const newTodos = todos.filter((todo) => todo.id !== id)
-    setTodos(newTodos)
-    
+    const newTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(newTodos);
   }
 
   function handleAddTodo(e) {
@@ -61,37 +60,49 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <div className="content-wrapper">
+        <div>
+          <input
+            ref={todoNameRef}
+            type="text"
+            id="todo"
+            placeholder="Add A Magnifier"
+          />
+          <div className="add-clear-btns">
+            <button
+              className="btn btn-dark border border-primary"
+              onClick={handleClearInputField}
+            >
+              Clear
+            </button>
+            <button
+              className="btn btn-dark border border-primary"
+              onClick={handleAddTodo}
+            >
+              Add
+            </button>
+          </div>
+          <div className="todo-counter">
+            Left to do: {todos.filter((todo) => !todo.complete).length}
+          </div>
+        </div>
+        <TodoList
+          todos={todos}
+          toggleTodo={toggleTodo}
+          handleRemoveSingleTodo={handleRemoveSingleTodo}
+        />
 
-      <div>
-        <input ref={todoNameRef} type="text" id="todo" placeholder="Add A Magnifier" />
-        <div className="add-clear-btns">
+        <div className="clear-save-btn">
           <button
             className="btn btn-dark border border-primary"
-            onClick={handleClearInputField}
+            onClick={handleClearCompleteTodos}
           >
-            Clear
+            Clear Completed
           </button>
-          <button
-            className="btn btn-dark border border-primary"
-            onClick={handleAddTodo}
-          >
-            Add
+          <button className="btn btn-dark border border-primary">
+            Save All
           </button>
         </div>
-        <div className="todo-counter">
-          Left to do: {todos.filter((todo) => !todo.complete).length}
-        </div>
-      </div>
-      <TodoList todos={todos} toggleTodo={toggleTodo} handleRemoveSingleTodo={handleRemoveSingleTodo}/>
-
-      <div className="clear-save-btn">
-        <button
-          className="btn btn-dark border border-primary"
-          onClick={handleClearCompleteTodos}
-        >
-          Clear Completed
-        </button>
-        <button className="btn btn-dark border border-primary">Save All</button>
       </div>
       <Footer />
     </div>
