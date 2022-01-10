@@ -51,35 +51,38 @@ function App() {
   return (
     <div className="App">
       <Header />
+     
+          <div>
+            
+              <input
+                ref={todoNameRef}
+                type="text"
+                id="todo"
+                placeholder="Add Todo"
+              />
+              <div className="add-clear-btns">
 
-      <div>
-        <label htmlFor="todo">
-          <input
-            ref={todoNameRef}
-            type="text"
-            id="todo"
-            placeholder="Add Todo"
-          />
-          <button className="btn btn-dark" onClick={handleAddTodo}>
-            Add
-          </button>
-          <button className="btn btn-dark" onClick={handleClearInputField}>
-            Clear
-          </button>
-        </label>
-        <div className="todo-counter">
-        Left to do: {todos.filter((todo) => !todo.complete).length}
-        </div>
-      </div>
-      <TodoList todos={todos} toggleTodo={toggleTodo} />
+              <button className="btn btn-dark border border-primary" onClick={handleClearInputField}>
+                Clear
+              </button>
+              <button className="btn btn-dark border border-primary" onClick={handleAddTodo}>
+                Add
+              </button>
+              
+              </div>
+            <div className="todo-counter">
+              Left to do: {todos.filter((todo) => !todo.complete).length}
+            </div>
+          </div>
+          <TodoList todos={todos} toggleTodo={toggleTodo} />
 
-      <div className="clear-save-btn">
-        <button className="btn btn-dark" onClick={handleClearCompleteTodos}>
-          Clear Completed
-        </button>
-        <button className="btn btn-dark">Save All</button>
-      </div>
-      <Footer />
+          <div className="clear-save-btn">
+            <button className="btn btn-dark border border-primary" onClick={handleClearCompleteTodos}>
+              Clear Completed
+            </button>
+            <button className="btn btn-dark border border-primary">Save All</button>           
+          </div>
+          <Footer />
     </div>
   );
 }

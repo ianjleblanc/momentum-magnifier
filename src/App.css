@@ -7,6 +7,15 @@
 .App {
     text-align: center;
     background-color: rgb(78, 82, 82);
+    background-image: url("./images/space-purple-blue.jpg");
+    height: 100vh;
+}
+
+.add-clear-btns {
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+    margin: 14px auto;
 }
 
 .todo-counter {
@@ -19,7 +28,7 @@
     width: 60%;
     margin: 16px auto;
     justify-content: space-around;
-    border: 1px solid black;
+    border: 1px solid purple;
     position: relative;
     padding: 10px 0px;
     background-color: black;
@@ -33,6 +42,7 @@
     padding: 2px 10px;
     position: absolute;
     right: 0%;
+    color: white;
     
 }
 
@@ -43,6 +53,10 @@
     /* width: 60%; */
 }
 
+/* .clear-save-btn button {
+    border: 4px purple !important;
+} */
+
 input[type=checkbox] {
     padding: 2px 10px;
     position: absolute;
@@ -51,4 +65,8 @@ input[type=checkbox] {
 
 .footer {
     color: white;
+    left: 50%;
+    margin-left: -23px;
+    position: fixed;
+    bottom: 0;
 }
