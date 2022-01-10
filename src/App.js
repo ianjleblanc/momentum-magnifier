@@ -27,10 +27,14 @@ function App() {
     setTodos(newTodos);
   }
 
-  function handleClearCompleteTodos(e) {
-    e.preventDefault();
-    const newTodos = todos.filter((todo) => !todo.complete);
-    setTodos(newTodos);
+  function handleClearCompleteTodos() {
+    
+    const confirm = window.confirm("Are you sure want to clear all magnifiers?")
+    if (confirm) {
+      const newTodos = todos.filter((todo) => !todo.complete);
+      setTodos(newTodos);
+    }
+    
   }
 
   function handleClearInputField() {
