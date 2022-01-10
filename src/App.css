@@ -11,6 +11,10 @@
     height: 100vh;
 }
 
+.momenti-header {
+    font-size: 70px !important;
+}
+
 .add-clear-btns {
     display: flex;
     justify-content: space-around;
@@ -50,12 +54,10 @@
     
     display: flex;
     justify-content: space-around;
-    /* width: 60%; */
+    
 }
 
-/* .clear-save-btn button {
-    border: 4px purple !important;
-} */
+
 
 input[type=checkbox] {
     padding: 2px 10px;
@@ -65,8 +67,7 @@ input[type=checkbox] {
 
 .footer {
     color: white;
-    left: 50%;
-    margin-left: -23px;
+    width: 100%;
     position: fixed;
     bottom: 0;
 }

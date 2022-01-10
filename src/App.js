@@ -37,6 +37,12 @@ function App() {
     todoNameRef.current.value = null;
   }
 
+  function handleRemoveSingleTodo(id) {
+    const newTodos = todos.filter((todo) => todo.id !== id)
+    setTodos(newTodos)
+    
+  }
+
   function handleAddTodo(e) {
     e.preventDefault();
     const name = todoNameRef.current.value;
@@ -51,38 +57,39 @@ function App() {
   return (
     <div className="App">
       <Header />
-     
-          <div>
-            
-              <input
-                ref={todoNameRef}
-                type="text"
-                id="todo"
-                placeholder="Add Todo"
-              />
-              <div className="add-clear-btns">
 
-              <button className="btn btn-dark border border-primary" onClick={handleClearInputField}>
-                Clear
-              </button>
-              <button className="btn btn-dark border border-primary" onClick={handleAddTodo}>
-                Add
-              </button>
-              
-              </div>
-            <div className="todo-counter">
-              Left to do: {todos.filter((todo) => !todo.complete).length}
-            </div>
-          </div>
-          <TodoList todos={todos} toggleTodo={toggleTodo} />
+      <div>
+        <input ref={todoNameRef} type="text" id="todo" placeholder="Add A Magnifier" />
+        <div className="add-clear-btns">
+          <button
+            className="btn btn-dark border border-primary"
+            onClick={handleClearInputField}
+          >
+            Clear
+          </button>
+          <button
+            className="btn btn-dark border border-primary"
+            onClick={handleAddTodo}
+          >
+            Add
+          </button>
+        </div>
+        <div className="todo-counter">
+          Left to do: {todos.filter((todo) => !todo.complete).length}
+        </div>
+      </div>
+      <TodoList todos={todos} toggleTodo={toggleTodo} handleRemoveSingleTodo={handleRemoveSingleTodo}/>
 
-          <div className="clear-save-btn">
-            <button className="btn btn-dark border border-primary" onClick={handleClearCompleteTodos}>
-              Clear Completed
-            </button>
-            <button className="btn btn-dark border border-primary">Save All</button>           
-          </div>
-          <Footer />
+      <div className="clear-save-btn">
+        <button
+          className="btn btn-dark border border-primary"
+          onClick={handleClearCompleteTodos}
+        >
+          Clear Completed
+        </button>
+        <button className="btn btn-dark border border-primary">Save All</button>
+      </div>
+      <Footer />
     </div>
   );
 }

@@ -1,10 +1,12 @@
 import React from "react";
 
-export default function todoItem({ todo, toggleTodo }) {
+export default function todoItem({ todo, toggleTodo, handleRemoveSingleTodo }) {
 
   function handleTodoClick() {
     toggleTodo(todo.id);
   }
+
+  
 
   return (
     <div className="todo-item">
@@ -14,7 +16,7 @@ export default function todoItem({ todo, toggleTodo }) {
           onChange={handleTodoClick}
         />
         {todo.name.toUpperCase()}
-      <button className="remove-todo-btn">X</button>
+      <button onClick={handleRemoveSingleTodo} className="remove-todo-btn">X</button>
     </div>
   );
 }
