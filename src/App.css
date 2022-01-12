@@ -16,15 +16,23 @@
     font-size: 70px !important;
 }
 
+/* .input-add-clear {
+    display: flex;
+    justify-content: space-between;
+} */
+
 .add-clear-btns {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     width: 60%;
     margin: 14px auto;
 }
 
 .todo-counter {
-    color: white;
+    color: rgb(253, 253, 253);
+    font-weight: bold;
+    /* margin-top: 10px; */
+    margin: 10px 5px;
 }
 
 .todo-item {
@@ -38,6 +46,8 @@
     padding: 10px 0px;
     background-color: black;
     color: white;
+    border-radius: 5px;
+    font-weight: bold;
     
 }
 
@@ -77,3 +87,4 @@ input[type=checkbox] {
     /* bottom: 0; */
     height: 100px;
 }
+

@@ -1,6 +1,6 @@
 universe background
 
-
+set limited characters to 13-14
 
 
 option for creating vision board - becomes background?

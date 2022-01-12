@@ -61,7 +61,7 @@ function App() {
     <div className="App">
       <Header />
       <div className="content-wrapper">
-        <div>
+        <div className="input-clear-add">
           <input
             ref={todoNameRef}
             type="text"
@@ -75,6 +75,9 @@ function App() {
             >
               Clear
             </button>
+            <div className="todo-counter">
+            Left to do: {todos.filter((todo) => !todo.complete).length}
+            </div>
             <button
               className="btn btn-dark border border-primary"
               onClick={handleAddTodo}
@@ -82,9 +85,7 @@ function App() {
               Add
             </button>
           </div>
-          <div className="todo-counter">
-            Left to do: {todos.filter((todo) => !todo.complete).length}
-          </div>
+          
         </div>
         <TodoList
           todos={todos}
