@@ -75,17 +75,17 @@ function App() {
             >
               Clear
             </button>
-            <div className="todo-counter">
-            Left to do: {todos.filter((todo) => !todo.complete).length}
-            </div>
+            
             <button
               className="btn btn-dark border border-primary"
               onClick={handleAddTodo}
             >
               Add
             </button>
-          </div>
-          
+            </div>
+            <div className="todo-counter">
+            Left to do: {todos.filter((todo) => !todo.complete).length}
+            </div>
         </div>
         <TodoList
           todos={todos}

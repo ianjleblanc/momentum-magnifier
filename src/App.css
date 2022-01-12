@@ -23,7 +23,7 @@
 
 .add-clear-btns {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     width: 60%;
     margin: 14px auto;
 }
@@ -32,7 +32,7 @@
     color: rgb(253, 253, 253);
     font-weight: bold;
     /* margin-top: 10px; */
-    margin: 10px 5px;
+    /* margin: 10px 5px; */
 }
 
 .todo-item {
